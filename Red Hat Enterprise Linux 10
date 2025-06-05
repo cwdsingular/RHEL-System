@@ -1,0 +1,65 @@
+Registration Assistant
+Registering a System - Red Hat Enterprise Linux 10
+< Registering a System
+
+Registration Service
+Registration Process
+Remote host configuration (rhc) allows you to connect your systems to Red Hat with one command. Connect, register, and manage.
+
+RHC in RHEL 10 provides below listed feature levels, all these features are enabled by default.
+
+content - Provides access to Red Hat CDN repositories.
+analytics - Enables data collection for Insights.
+remote-management - Establishes an additional MQTT network connection to Red Hat services for remote execution of certain actions from console.redhat.com
+To register the system with the default feature level and ensure system executes the Remediation and Tasks from Insights:
+
+# rhc connect -u <$username> -p <$password>
+Or register with an activation key:
+
+# rhc connect --activation-key <$activation-key> --organization <$organization_ID>
+Install rhc-worker-playbook package:
+
+# dnf install -y rhc-worker-playbook
+Confirm the active features when registering with default options:
+
+# rhc status
+   Connection status:
+   ✓ Connected to Red Hat Subscription Management
+   ✓ Connected to Red Hat Insights
+   ✓ The yggdrasil service is active
+   Manage your connected systems: https://red.ht/connector
+Note: We can use --disable-feature option of RHC command to disable a specific feature (if needed).
+
+Configure System Purpose:
+
+subscription-manager syspurpose role --set="Red Hat Enterprise Linux Server"
+subscription-manager syspurpose service-level --set="Self-Support"
+subscription-manager syspurpose usage --set="Disaster Recovery"
+For more details, please see Registering your RHEL system.
+
+Red Hat
+LinkedIn
+YouTube
+Facebook
+X, formerly Twitter
+Quick Links
+Downloads
+Subscriptions
+Support Cases
+Customer Service
+Product Documentation
+Help
+Contact Us
+Customer Portal FAQ
+Log-in Assistance
+Site Info
+Trust Red Hat
+Browser Support Policy
+Accessibility
+Awards and Recognition
+Colophon
+Related Sites
+redhat.com
+developers.redhat.com
+connect.redhat.com
+cloud.redhat.com
